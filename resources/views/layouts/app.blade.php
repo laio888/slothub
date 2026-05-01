@@ -3,39 +3,40 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@yield('title', 'SlotHub') — Agenda tu próxima cita</title>
+    <title>@yield('title', 'Tu Nombre - Cosmetología')</title>
 
-    {{-- Favicon --}}
-    <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon.svg') }}"/>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23c9a84c'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' fill='white' dy='5'>✦</text></svg>"/>
 
-    {{-- Google Fonts --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
-    {{-- CSS principal --}}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-
-    {{-- CSS extra por página (opcional) --}}
-    @stack('styles')
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
 
-{{-- NAVBAR --}}
-@include('components.navbar')
+<nav>
+    <a class="nav-brand" href="/">
+        <div class="nav-logo">✦</div>
+        <span class="nav-brand-text">Tu Nombre - Cosmetología</span>
+    </a>
 
-{{-- CONTENIDO DE CADA PÁGINA --}}
-<main>
-    @yield('content')
-</main>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
 
-{{-- FOOTER --}}
-@include('components.footer')
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/"          class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a></li>
+        <li><a href="/servicios" class="{{ request()->is('servicios') ? 'active' : '' }}">Servicios</a></li>
+        <li><a href="/agendar"   class="{{ request()->is('agendar') ? 'active' : '' }}">Agendar</a></li>
+        <li><a href="/login"     class="{{ request()->is('login') ? 'active' : '' }}">Login</a></li>
+    </ul>
+</nav>
 
-{{-- JS principal --}}
-<script src="{{ asset('js/main.js') }}"></script>
+@yield('content')
 
-{{-- JS extra por página (opcional) --}}
+<footer>© 2025 Tu Nombre - Cosmetología — Todos los derechos reservados</footer>
+
+<script src="{{ asset('js/nav.js') }}"></script>
+
 @stack('scripts')
 
 </body>
