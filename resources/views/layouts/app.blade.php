@@ -10,6 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <script>
+        try {
+            if (JSON.parse(sessionStorage.getItem('cosm_user'))) {
+                document.documentElement.classList.add('is-logged');
+            }
+        } catch(e) {}
+    </script>
+</head>
 </head>
 <body>
 
@@ -28,6 +36,7 @@
         <li><a href="/servicios" class="{{ request()->is('servicios') ? 'active' : '' }}">Servicios</a></li>
         <li><a href="/agendar"   class="{{ request()->is('agendar') ? 'active' : '' }}">Agendar</a></li>
         <li><a href="/login"     class="{{ request()->is('login') ? 'active' : '' }}">Login</a></li>
+        <li><a href="/registro" class="{{ request()->is('registro') ? 'active' : '' }}">Registro</a></li>
     </ul>
 </nav>
 
@@ -35,7 +44,7 @@
 
 <footer>© 2025 Tu Nombre - Cosmetología — Todos los derechos reservados</footer>
 
-<script src="{{ asset('js/nav.js') }}"></script>
+<script type="module" src="/js/nav.js"></script>
 
 @stack('scripts')
 
