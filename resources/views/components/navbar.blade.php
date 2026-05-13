@@ -1,46 +1,57 @@
-<header class="navbar" id="navbar">
-    <div class="nav-inner">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@yield('title', 'Leanny Alzate Cosmetología')</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23c9a84c'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' fill='white' dy='5'>✦</text></svg>"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    @stack('styles')
+</head>
+<body>
 
-        <a href="{{ route('home') }}" class="logo">
-            <span class="logo-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <rect width="32" height="32" rx="8" fill="#00E5A0"/>
-                    <path d="M8 16C8 11.582 11.582 8 16 8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8z"
-                          stroke="#0A0F1E" stroke-width="2" fill="none"/>
-                    <path d="M16 11v5l3 3" stroke="#0A0F1E" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </span>
-            Slot<strong>Hub</strong>
-        </a>
+<nav>
+    <a class="nav-brand" href="/">
+        <div class="nav-logo">✦</div>
+        <span class="nav-brand-text">Leanny Alzate Cosmetología</span>
+    </a>
 
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-            <span></span><span></span><span></span>
-        </button>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="{{ route('home') }}"
-               class="{{ request()->routeIs('home') ? 'active' : '' }}">
-                Inicio
-            </a>
-            <a href="{{ route('servicios') }}"
-               class="{{ request()->routeIs('servicios') ? 'active' : '' }}">
-                Servicios
-            </a>
-            <a href="{{ route('como-funciona') }}"
-               class="{{ request()->routeIs('como-funciona') ? 'active' : '' }}">
-                ¿Cómo funciona?
-            </a>
-            <a href="{{ route('aliados') }}"
-               class="{{ request()->routeIs('aliados') ? 'active' : '' }}">
-                Para Aliados
-            </a>
-            <a href="{{ route('contacto') }}"
-               class="{{ request()->routeIs('contacto') ? 'active' : '' }}">
-                Contacto
-            </a>
-            <a href="{{ route('login') }}" class="btn-nav">Iniciar sesión</a>
-            <a href="{{ route('register') }}" class="btn-nav btn-primary-nav">Registrarse</a>
-        </nav>
+    <ul class="nav-links" id="navLinks">
+        <!-- Links públicos -->
+        <li class="nav-public"><a href="/"          class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a></li>
+        <li class="nav-public"><a href="/servicios" class="{{ request()->is('servicios') ? 'active' : '' }}">Servicios</a></li>
 
-    </div>
-</header>
+        <!-- Links solo para NO logueados -->
+        <li class="nav-guest"><a href="/registro"   class="{{ request()->is('registro') ? 'active' : '' }}">Registro</a></li>
+        <li class="nav-guest"><a href="/login"       class="{{ request()->is('login') ? 'active' : '' }}">Login</a></li>
+
+        <!-- Links solo para logueados -->
+        <li class="nav-auth"><a href="/dashboard"   class="{{ request()->is('dashboard') ? 'active' : '' }}">Mi Panel</a></li>
+        <li class="nav-auth"><a href="/agendar"     class="{{ request()->is('agendar') ? 'active' : '' }}">Agendar</a></li>
+        <li class="nav-auth"><a href="/mis-citas"   class="{{ request()->is('mis-citas') ? 'active' : '' }}">Mis Citas</a></li>
+        <li class="nav-auth">
+            <a href="#" id="btnLogout" class="nav-logout">
+                <span>Cerrar sesión</span>
+            </a>
+        </li>
+
+        <!-- Avatar del usuario logueado -->
+        <li class="nav-auth nav-avatar-item">
+            <div class="nav-avatar" id="navAvatar">U</div>
+        </li>
+    </ul>
+</nav>
+
+@yield('content')
+
+<footer>© 2025 Leanny Alzate Cosmetología &mdash; Todos los derechos reservados</footer>
+
+<script type="module" src="/js/nav.js"></script>
+@stack('scripts')
+</body>
+</html>

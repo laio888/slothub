@@ -18,18 +18,21 @@
 
             <div class="field">
                 <label for="loginPass">Contraseña</label>
-                <input type="password" id="loginPass"  placeholder="••••••••" autocomplete="current-password"/>
+                <div class="input-icon-wrap">
+                    <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+                    <button type="button" class="toggle-pass" aria-label="Ver contraseña">👁</button>
+                </div>
                 <span class="error-msg" id="err-loginPass">La contraseña no puede estar vacía.</span>
             </div>
 
             <br/>
             <div class="btn-block">
-                <button class="btn-primary" onclick="submitLogin()">Ingresar</button>
+                <button class="btn-primary" id="btnLogin">Ingresar</button>
             </div>
         </div>
     </div>
 @endsection
 
 @push('scripts')
-    <script src="/js/login.js"></script>
+    <script type="module" src="/js/login.js"></script>
 @endpush
