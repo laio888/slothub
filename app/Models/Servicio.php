@@ -18,7 +18,7 @@ class Servicio extends Model {
         'estado_servicio',
     ];
 
-    // ── Relaciones ──────────────────────────────
+    // Relaciones...
     // Un servicio aparece en muchos detalles de cita
     public function detalles(): HasMany {
         return $this->hasMany(DetalleCita::class, 'id_servicio');

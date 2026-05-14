@@ -21,13 +21,11 @@ class Cliente extends Authenticatable {
 
     protected $hidden = ['contrasena'];
 
-    // Le decimos a Laravel que nuestra contraseña
-    // no se llama 'password' sino 'contrasena'
     public function getAuthPassword(): string {
         return $this->contrasena;
     }
 
-    // ── Relaciones ──────────────────────────────
+    // Relaciones...
     // Un cliente puede tener muchas citas
     public function citas(): HasMany {
         return $this->hasMany(Cita::class, 'id_cliente');

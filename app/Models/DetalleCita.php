@@ -16,8 +16,7 @@ class DetalleCita extends Model {
         'subtotal',
     ];
 
-    // ── Relaciones ──────────────────────────────
-
+    // Relaciones...
     // El detalle pertenece a una cita
     public function cita(): BelongsTo {
         return $this->belongsTo(Cita::class, 'id_cita');
