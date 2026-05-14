@@ -16,7 +16,7 @@ class Disponibilidad extends Model {
         'estado_disponibilidad',
     ];
 
-    // ── Relaciones ──────────────────────────────
+    // Relaciones...
     // Un horario disponible puede tener una sola cita
     public function cita(): HasOne {
         return $this->hasOne(Cita::class, 'id_disponibilidad');

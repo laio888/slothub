@@ -16,8 +16,7 @@ class Cancelacion extends Model {
         'id_cita',
     ];
 
-    // ── Relaciones ──────────────────────────────
-
+    // Relaciones...
     // La cancelación pertenece a una cita
     public function cita(): BelongsTo {
         return $this->belongsTo(Cita::class, 'id_cita');

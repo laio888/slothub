@@ -21,8 +21,7 @@ class Cita extends Model {
         'id_disponibilidad',
     ];
 
-    // ── Relaciones ──────────────────────────────
-
+    // Relaciones...
     // La cita pertenece a un cliente
     public function cliente(): BelongsTo {
         return $this->belongsTo(Cliente::class, 'id_cliente');
@@ -48,9 +47,8 @@ class Cita extends Model {
         return $this->hasOne(Cancelacion::class, 'id_cita');
     }
 
-    // ── Helpers útiles ───────────────────────────
-
-    // Calcula el total sumando los subtotales del detalle
+    // Calcula el total
+    //Suma los subtotales del detalle
     public function totalCita(): float {
         return $this->detalles->sum('subtotal');
     }

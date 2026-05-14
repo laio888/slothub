@@ -11,6 +11,10 @@
             <p class="tagline">Realza tu belleza con nuestros servicios profesionales</p>
         </div>
 
-        <a class="btn-primary" href="/agendar">Agendar Ahora</a>
+        @if(session('cliente_id'))
+            <a class="btn-primary" href="{{ route('agendar') }}">Agendar Ahora</a>
+        @else
+            <a class="btn-primary" href="{{ route('registro') }}">Comenzar</a>
+        @endif
     </section>
 @endsection
